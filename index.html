@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Magam Kushal Reddy • Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of Magam Kushal Reddy – Full Stack Web Developer (Frontend & Backend) studying at Methodist College of Engineering and Technology.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Default = dark theme variables */
+            --bg-main: #020617;
+            --bg-card: #0b1020;
+            --accent: #38bdf8;
+            --accent-secondary: #a855f7;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-subtle: rgba(148, 163, 184, 0.35);
+            --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.8);
+            --radius-xl: 20px;
+            --radius-xxl: 30px;
+        }
+
+        /* Light theme overrides */
+        body.light-theme {
+            --bg-main: #f3f4f6;
+            --bg-card: #ffffff;
+            --accent: #0ea5e9;
+            --accent-secondary: #6366f1;
+            --text-main: #0f172a;
+            --text-muted: #6b7280;
+            --border-subtle: rgba(148, 163, 184, 0.55);
+            --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.16), transparent 55%),
+                radial-gradient(circle at 90% 10%, rgba(34, 197, 94, 0.14), transparent 55%),
+                radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.16), transparent 55%),
+                var(--bg-main);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            font-size: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* LAYOUT WRAPPER */
+        .page {
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 80px auto 56px auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 24px;
+                padding: 0 18px;
+            }
+        }
+
+        /* NAVBAR */
+        .navbar-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(to bottom, rgba(5, 6, 18, 0.96), rgba(5, 6, 18, 0.88), transparent);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        body.light-theme .navbar-wrapper {
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.98), rgba(248, 250, 252, 0.9), transparent);
+            border-bottom-color: rgba(148, 163, 184, 0.5);
+        }
+
+        .navbar-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 14px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-inner {
+                padding: 12px 18px;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+                . nav-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            background: conic-gradient(from 210deg, #a855f7, #6366f1, #22c55e, #eab308, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            color: #020617;
+        }
+
+
+        .nav-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .nav-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            padding-block: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme toggle button in navbar */
+        .theme-toggle {
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            padding: 4px 10px;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        body.light-theme .theme-toggle {
+            background: #e5e7eb;
+            color: #0f172a;
+            border-color: rgba(148, 163, 184, 0.9);
+        }
+
+        .theme-toggle-pill {
+            width: 30px;
+            height: 14px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            position: relative;
+        }
+
+        body.light-theme .theme-toggle-pill {
+            background: #cbd5f5;
+        }
+
+        .theme-toggle-thumb {
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: var(--accent);
+            transition: transform 0.18s ease;
+        }
+
+        body.light-theme .theme-toggle-thumb {
+            transform: translateX(14px);
+        }
+
+        .nav-cta {
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: #020617;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(56, 189, 248, 0.5);
+        }
+
+        /* Mobile toggle */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-toggle {
+            display: none;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.9);
+            background: rgba(15, 23, 42, 0.98);
+            padding: 6px 10px;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .nav-toggle span {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        body.light-theme .nav-toggle {
+            background: #e5e7eb;
+            color: #0f172a;
+        }
+
+        @media (max-width: 768px) {
+            .nav-center,
+            .nav-cta {
+                display: none;
+            }
+            .nav-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Mobile dropdown menu */
+        .mobile-menu {
+            display: none;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 40px 10px 40px;
+        }
+
+        .mobile-menu-inner {
+            margin-top: 4px;
+            background: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            padding: 10px 12px;
+            box-shadow: 0 16px 40px var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 13px;
+        }
+
+        body.light-theme .mobile-menu-inner {
+            background: #ffffff;
+        }
+
+        .mobile-links a {
+            padding: 4px 2px;
+            color: var(--text-muted);
+        }
+
+        .mobile-links a:hover {
+            color: var(--text-main);
+        }
+
+        .mobile-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .mobile-cta {
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: #020617;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                padding: 0 18px 10px 18px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            margin-top: 56px;
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 32px;
+            align-items: center;
+            padding: 28px;
+            border-radius: var(--radius-xxl);
+            background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.24), transparent 55%),
+                        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.16), transparent 55%),
+                        var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-soft);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+                padding: 22px;
+            }
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: clamp(30px, 4vw, 40px);
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(120deg, #e5e7eb, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        body.light-theme .hero-title span {
+            background: linear-gradient(120deg, #0f172a, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-role {
+            font-size: 17px;
+            margin-bottom: 14px;
+            color: var(--text-main);
+        }
+
+        .hero-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 550px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text strong {
+            color: var(--text-main);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            border-radius: 999px;
+            padding: 10px 20px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            color: #020617;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 14px 32px rgba(56, 189, 248, 0.5);
+        }
+
+        .btn-secondary {
+            border-radius: 999px;
+            padding: 9px 16px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: rgba(5, 6, 18, 0.95);
+            color: #e5e7eb;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        body.light-theme .btn-secondary {
+            background: #e5e7eb;
+            color: #0f172a;
+            border-color: rgba(148, 163, 184, 0.9);
+        }
+
+        .hero-badges {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 11px;
+        }
+
+        .hero-badge {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: rgba(5, 6, 18, 0.9);
+            color: var(--text-muted);
+        }
+
+        body.light-theme .hero-badge {
+            background: #f3f4f6;
+            color: var(--text-muted);
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-profile {
+            border-radius: 24px;
+            background: var(--bg-main);
+            border: 1px solid var(--border-subtle);
+            padding: 20px 20px 18px 20px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 999px;
+            margin: 0 auto 10px auto;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            background: radial-gradient(circle at 30% 0, rgba(248, 250, 252, 0.5), transparent 45%), var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .profile-name {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .profile-role {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .profile-tag {
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: var(--bg-card);
+            color: var(--text-muted);
+        }
+
+        .profile-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            margin-bottom: 18px;
+        }
+
+        .section-kicker {
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .section-title span {
+            background: linear-gradient(120deg, #e5e7eb, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        body.light-theme .section-title span {
+            background: linear-gradient(120deg, #0f172a, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            max-width: 520px;
+        }
+
+        /* ABOUT SECTION */
+        .about-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 22px 24px 20px 24px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .about-text strong {
+            color: var(--text-main);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 18px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .about-box {
+            background: var(--bg-main);
+            border-radius: 16px;
+            padding: 12px 14px;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        body.light-theme .about-box {
+            background: #f9fafb;
+        }
+
+        .about-box-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .skills-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 20px 22px 18px 22px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .skill-tag {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            font-size: 12px;
+            color: var(--text-main);
+            background: var(--bg-main);
+        }
+
+        .skill-meter-group {
+            margin-top: 10px;
+        }
+
+        .skill-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .skill-bar-bg {
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: #020617;
+            overflow: hidden;
+            border: 1px solid rgba(30, 64, 175, 0.9);
+        }
+
+        body.light-theme .skill-bar-bg {
+            background: #e5e7eb;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr); /* one below another */
+            gap: 16px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 16px 18px 14px 18px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.85);
+            font-size: 13px;
+        }
+
+        body.light-theme .project-card {
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        .project-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .project-type {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11px;
+        }
+
+        .project-tags span {
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            background: var(--bg-main);
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr); /* DETAILS BELOW FORM ALWAYS */
+            gap: 20px;
+        }
+
+        .field {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-muted);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: var(--bg-main);
+            padding: 9px 11px;
+            font-size: 13px;
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.8);
+        }
+
+        .field textarea {
+            min-height: 96px;
+            resize: vertical;
+        }
+
+        .contact-info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .contact-label {
+            color: var(--text-muted);
+        }
+
+        .contact-value {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .social-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        .social-chip {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 32px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(148, 163, 184, 0.3);
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .footer {
+                flex-direction: column;
+            }
+        }
+        /* =========================
+   FAQ SECTION
+   ========================= */
+.faq-section {
+    margin-top: 56px;
+}
+
+.faq-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* Mobile / Tablet layout */
+@media (max-width: 900px) {
+    .faq-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Left Intro Card */
+.faq-intro-card {
+    position: relative;
+    background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.32), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.26), transparent 55%),
+        var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 22px 20px 20px 20px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+/* Glow border illusion */
+.faq-intro-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+        from 180deg,
+        rgba(56, 189, 248, 0.85),
+        rgba(168, 85, 247, 0.85),
+        rgba(34, 197, 94, 0.85),
+        rgba(56, 189, 248, 0.85)
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* Subtle gradient orb for depth */
+.faq-intro-card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 999px;
+    right: -40px;
+    top: -60px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.32), transparent 60%);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.faq-intro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+}
+
+body.light-theme .faq-intro-pill {
+    background: #e5e7eb;
+}
+
+.faq-intro-title {
+    margin-top: 14px;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-intro-title span {
+    background: linear-gradient(120deg, #e5e7eb, #38bdf8, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+body.light-theme .faq-intro-title span {
+    background: linear-gradient(120deg, #0f172a, #0ea5e9, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.faq-intro-text {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+}
+
+.faq-intro-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-meta-item {
+    flex: 1 1 70px;
+    min-width: 70px;
+}
+
+.faq-meta-number {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.faq-meta-label {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.faq-intro-hint {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px dashed rgba(148, 163, 184, 0.6);
+    display: inline-flex;
+    position: relative;
+    z-index: 1;
+}
+body.light-theme .faq-intro-hint {
+    background: #f3f4f6;
+}
+
+/* Right Accordion List */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual FAQ Item */
+.faq-item {
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    overflow: hidden;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.16s ease;
+}
+
+body.light-theme .faq-item {
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.faq-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(56, 189, 248, 0.9);
+    box-shadow: 0 18px 40px rgba(56, 189, 248, 0.35);
+}
+
+/* Header button */
+.faq-item-header {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: inherit;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.faq-question {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Toggle Icon (plus/minus) */
+.faq-toggle-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    background: rgba(15, 23, 42, 0.95);
+}
+
+body.light-theme .faq-toggle-icon {
+    background: #e5e7eb;
+}
+
+.faq-line {
+    position: absolute;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.faq-line-horizontal {
+    width: 13px;
+    height: 2px;
+}
+
+.faq-line-vertical {
+    width: 2px;
+    height: 13px;
+}
+
+/* Body */
+.faq-item-body {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding: 0 14px 0 14px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.22s ease, padding-bottom 0.18s ease;
+}
+
+/* Open state */
+.faq-item.is-open .faq-item-body {
+    padding-bottom: 10px;
+}
+
+.faq-item.is-open .faq-line-vertical {
+    transform: scaleY(0);
+    opacity: 0;
+}
+
+/* Small screens tweaks */
+@media (max-width: 600px) {
+    .faq-intro-card {
+        padding: 18px 16px 16px 16px;
+    }
+
+    .faq-intro-meta {
+        gap: 10px;
+    }
+
+    .faq-item-header {
+        padding: 10px 12px;
+    }
+
+    .faq-item-body {
+        padding: 0 12px 0 12px;
+    }
+}
+
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- NAVBAR -->
+    <div class="navbar-wrapper">
+        <div class="navbar-inner">
+            <header class="navbar" id="navbar">
+                <div class="nav-left">
+                    <div class="nav-logo">
+                        <div class="nav-logo-inner">MK</div>
+                    </div>
+                    <div class="nav-title-block">
+                        <div class="nav-name">Magam Kushal Reddy</div>
+                        <div class="nav-role">Full Stack Web Developer • CSE (AI)</div>
+                    </div>
+                </div>
+
+                <div class="nav-center">
+                    <nav class="nav-links" id="navLinks">
+                        <a onclick="scrollToSection('hero')">Home</a>
+                        <a onclick="scrollToSection('about')">About</a>
+                        <a onclick="scrollToSection('skills')">Skills</a>
+                        <a onclick="scrollToSection('projects')">Projects</a>
+                        <a onclick="scrollToSection('contact')">Contact</a>
+                    </nav>
+                    <button class="theme-toggle" id="themeToggle">
+                        <span id="themeToggleText">Dark</span>
+                        <div class="theme-toggle-pill">
+                            <div class="theme-toggle-thumb"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="nav-right">
+                    <button class="nav-cta" onclick="scrollToSection('contact')" id="navCta">
+                        Hire / Contact
+                    </button>
+                    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                        <span>☰</span>
+                    </button>
+                </div>
+            </header>
+        </div>
+
+        <!-- MOBILE DROPDOWN MENU -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-inner">
+                <div class="mobile-links">
+                    <a onclick="scrollToSection('hero')">Home</a>
+                    <a onclick="scrollToSection('about')">About</a>
+                    <a onclick="scrollToSection('skills')">Skills</a>
+                    <a onclick="scrollToSection('projects')">Projects</a>
+                    <a onclick="scrollToSection('contact')">Contact</a>
+                </div>
+                <div class="mobile-row">
+                    <button class="mobile-cta" onclick="scrollToSection('contact')">
+                        Hire / Contact
+                    </button>
+                    <button class="theme-toggle" id="themeToggleMobile">
+                        <span id="themeToggleTextMobile">Dark</span>
+                        <div class="theme-toggle-pill">
+                            <div class="theme-toggle-thumb"></div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- HERO -->
+        <section id="hero" class="hero">
+            <div class="hero-left">
+                <div class="hero-kicker">Full Stack Web Developer</div>
+                <h1 class="hero-title">
+                    Hi, I'm <span>Magam Kushal Reddy</span>
+                </h1>
+                <div class="hero-role">
+                    Building modern, premium and fully responsive web applications.
+                </div>
+                <p class="hero-text">
+                    I am a <strong>Full Stack Web Developer</strong> studying 
+                    <strong>Computer Science & Artificial Intelligence</strong> at 
+                    <strong>Methodist College of Engineering and Technology</strong>.  
+                    I focus on clean layouts, proper margins, and well-aligned components
+                    that work perfectly on <strong>mobile, desktop and large screens</strong>.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToSection('projects')">
+                        View Projects
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToSection('skills')">
+                        View Skills Matrix
+                    </button>
+                </div>
+
+                <div class="hero-badges">
+                    <div class="hero-badge">Frontend & Backend</div>
+                    <div class="hero-badge">Responsive UI / UX</div>
+                    <div class="hero-badge">Dashboards & Portals</div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-profile">
+                    <div class="avatar">MK</div>
+                    <div class="profile-name">Magam Kushal Reddy</div>
+                    <div class="profile-role">
+                        Full Stack Developer • UI-focused
+                    </div>
+                    <div class="profile-tags">
+                        <span class="profile-tag">HTML • CSS • JS</span>
+                        <span class="profile-tag">PHP • MySQL</span>
+                        <span class="profile-tag">Responsive Design</span>
+                    </div>
+                    <div class="profile-meta">
+                        <span>📍 Anthaipally , Hyderabad</span>
+                        <span>Open to opportunities</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-header">
+                <div class="section-kicker">About</div>
+                <h2 class="section-title">
+                    About <span>me</span>
+                </h2>
+                <p class="section-subtitle">
+                    Short overview of who you are, your background, and what type of work you enjoy doing.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <p class="about-text">
+                    I'm <strong>Magam Kushal Reddy</strong>, an engineering student specializing in 
+                    <strong>CSE (AI)</strong> at Methodist College of Engineering and Technology.
+                    I build <strong>full-stack web applications</strong> with a strong focus on 
+                    <strong>UI design, proper spacing, alignment, and mobile responsiveness</strong>.
+                </p>
+                <p class="about-text">
+                    I enjoy creating <strong>dashboards, management systems, file portals, and student ERP modules</strong> 
+                    that look premium and stay consistent across devices. My code is clean, structured, 
+                    and easy to maintain.
+                </p>
+
+                <div class="about-grid">
+                    <div class="about-box">
+                        <div class="about-box-title">Education</div>
+                        B.Tech in Computer Science & Artificial Intelligence  
+                        <br>Methodist College of Engineering and Technology
+                    </div>
+                    <div class="about-box">
+                        <div class="about-box-title">Focus</div>
+                        Full Stack Web Development, Responsive UI, Dashboards,  
+                        File management systems, ERP-like college tools.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-header">
+                <div class="section-kicker">Skills</div>
+                <h2 class="section-title">
+                    My <span>tech stack</span>
+                </h2>
+                <p class="section-subtitle">
+                    Technologies and tools I use to design and build complete web applications.
+                </p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="card">
+                    <h3 class="card-title">Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3 / Flex / Grid</span>
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Basic React</span>
+                        <span class="skill-tag">Git / GitHub</span>
+                    </div>
+
+                    <div class="skill-meter-group">
+                        <div class="skill-row">
+                            <span>Frontend (UI / Layouts)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-meter-group">
+                        <div class="skill-row">
+                            <span>Backend (PHP & MySQL)</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-meter-group">
+                        <div class="skill-row">
+                            <span>Responsiveness & UX</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">What I build</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">
+                        Types of projects and systems I usually work on:
+                    </p>
+                    <ul style="font-size: 13px; color: var(--text-muted); padding-left: 18px; line-height: 1.8;">
+                        <li>Student ERP dashboards and academic management panels.</li>
+                        <li>File / folder management systems with uploads and search.</li>
+                        <li>Responsive portfolio websites and landing pages.</li>
+                        <li>Case management or consultant status tracking portals.</li>
+                        <li>Simple REST-style backend APIs with PHP & MySQL.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="section-header">
+                <div class="section-kicker">Projects</div>
+                <h2 class="section-title">
+                    Selected <span>projects</span>
+                </h2>
+                <p class="section-subtitle">
+                    A few examples of my work. All projects are designed with clean layout,
+                    proper spacing and perfect alignment.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">Student ERP Dashboard</div>
+                    <div class="project-type">Full Stack • College-focused</div>
+                    <div class="project-desc">
+                        A complete dashboard for student details, attendance, fee overview, and
+                        analytics cards with modern responsive layout.
+                    </div>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">File Management System</div>
+                    <div class="project-type">Dashboard • File / Folder</div>
+                    <div class="project-desc">
+                        Web portal to upload, manage and organize files in folders with search,
+                        sorting and role-based access controls.
+                    </div>
+                    <div class="project-tags">
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                        <span>Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Case Management Portal</div>
+                    <div class="project-type">Frontend • Consultant tool</div>
+                    <div class="project-desc">
+                        Responsive portal with status cards, filters and neatly aligned tables
+                        for tracking case progress and consultant status.
+                    </div>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="section-header">
+                <div class="section-kicker">Contact</div>
+                <h2 class="section-title">
+                    Get in <span>touch</span>
+                </h2>
+                <p class="section-subtitle">
+                    Want to work together, collaborate or discuss a project? Send a message.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="card">
+                    <h3 class="card-title">Message form</h3>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="2bc7fd11-d82a-436b-a771-69108a24d2a0">
+  
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" placeholder="Your name">
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="you@example.com">
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" placeholder="Project details or collaboration idea"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            Send message
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Details</h3>
+                    <div class="contact-info-row">
+                        <span class="contact-label">Name</span>
+                        <span class="contact-value">Magam Kushal Reddy</span>
+                    </div>
+                    <div class="contact-info-row">
+                        <span class="contact-label">Role</span>
+                        <span class="contact-value">Full Stack Web Developer</span>
+                    </div>
+                    <div class="contact-info-row">
+                        <span class="contact-label">College</span>
+                        <span class="contact-value">Methodist College of Engineering and Technology</span>
+                    </div>
+                    <div class="contact-info-row">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Hyderabad, India</span>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <div class="contact-label" style="margin-bottom: 4px;">Social</div>
+                        <div class="social-list">
+                            <a href="#" class="social-chip">GitHub</a>
+                            <a href="#" class="social-chip">LinkedIn</a>
+                            <a href="#" class="social-chip">Portfolio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- FAQ SECTION -->
+<section id="faq" class="faq-section">
+    <div class="section-header">
+        <div class="section-kicker">FAQ</div>
+        <h2 class="section-title">
+            Frequently asked <span>questions</span>
+        </h2>
+        <p class="section-subtitle">
+            Quick answers about my workflow, technologies, responsiveness and how I collaborate on projects.
+        </p>
+    </div>
+
+    <div class="faq-wrapper">
+        <!-- Left: Highlight Card -->
+        <div class="faq-intro-card">
+            <div class="faq-intro-pill">Need clarity?</div>
+            <h3 class="faq-intro-title">
+                Everything about my <span>development style</span>.
+            </h3>
+            <p class="faq-intro-text">
+                I focus on <strong>clean UI</strong>, <strong>perfect spacing</strong> and 
+                <strong>mobile-first layouts</strong> with high quality, premium visuals for dashboards,
+                portals and ERP-like systems.
+            </p>
+
+            <div class="faq-intro-meta">
+                <div class="faq-meta-item">
+                    <div class="faq-meta-number">15+</div>
+                    <div class="faq-meta-label">Full projects</div>
+                </div>
+                <div class="faq-meta-item">
+                    <div class="faq-meta-number">100%</div>
+                    <div class="faq-meta-label">Responsive UI</div>
+                </div>
+                <div class="faq-meta-item">
+                    <div class="faq-meta-number">24/7</div>
+                    <div class="faq-meta-label">Code consistency</div>
+                </div>
+            </div>
+
+            <div class="faq-intro-hint">
+                Tap on a question to expand the answer.
+            </div>
+        </div>
+
+        <!-- Right: FAQ Accordions -->
+        <div class="faq-list">
+            <!-- Item 1 -->
+            <div class="faq-item is-open">
+                <button class="faq-item-header" type="button">
+                    <div class="faq-question">
+                        How do you start working on a new project?
+                    </div>
+                    <div class="faq-toggle-icon">
+                        <span class="faq-line faq-line-horizontal"></span>
+                        <span class="faq-line faq-line-vertical"></span>
+                    </div>
+                </button>
+                <div class="faq-item-body">
+                    <p>
+                        I begin with understanding the <strong>requirements and user flow</strong>,
+                        then create a <strong>layout structure</strong> with proper grids, spacing and
+                        mobile behaviour. After that, I move to premium UI styling and finally
+                        connect backend / database if required.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="faq-item">
+                <button class="faq-item-header" type="button">
+                    <div class="faq-question">
+                        What technologies do you mainly use for web projects?
+                    </div>
+                    <div class="faq-toggle-icon">
+                        <span class="faq-line faq-line-horizontal"></span>
+                        <span class="faq-line faq-line-vertical"></span>
+                    </div>
+                </button>
+                <div class="faq-item-body">
+                    <p>
+                        For most dashboards and portals I use 
+                        <strong>HTML5, CSS3 (Flex/Grid), JavaScript (ES6+), PHP and MySQL</strong>.
+                        I also use <strong>Bootstrap</strong> where needed and focus strongly on
+                        <strong>hand-crafted responsive layouts</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="faq-item">
+                <button class="faq-item-header" type="button">
+                    <div class="faq-question">
+                        Are your designs fully responsive for mobile and desktop?
+                    </div>
+                    <div class="faq-toggle-icon">
+                        <span class="faq-line faq-line-horizontal"></span>
+                        <span class="faq-line faq-line-vertical"></span>
+                    </div>
+                </button>
+                <div class="faq-item-body">
+                    <p>
+                        Yes. I always design with a <strong>mobile-first</strong> mindset and then refine
+                        for <strong>desktop and larger screens</strong>. I carefully manage margins,
+                        paddings, typography scales and component stacking to avoid “flexing too much”
+                        on any device.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="faq-item">
+                <button class="faq-item-header" type="button">
+                    <div class="faq-question">
+                        Can you integrate my existing backend or database?
+                    </div>
+                    <div class="faq-toggle-icon">
+                        <span class="faq-line faq-line-horizontal"></span>
+                        <span class="faq-line faq-line-vertical"></span>
+                    </div>
+                </button>
+                <div class="faq-item-body">
+                    <p>
+                        Yes. I can integrate with your existing <strong>PHP / MySQL</strong> backend or
+                        build a fresh backend layer. I keep the <strong>code structured</strong>,
+                        so it’s easy to maintain, extend and debug later.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="faq-item">
+                <button class="faq-item-header" type="button">
+                    <div class="faq-question">
+                        Are you available for freelance or collaboration work?
+                    </div>
+                    <div class="faq-toggle-icon">
+                        <span class="faq-line faq-line-horizontal"></span>
+                        <span class="faq-line faq-line-vertical"></span>
+                    </div>
+                </button>
+                <div class="faq-item-body">
+                    <p>
+                        Yes, I am open to <strong>freelance projects, collaborations and long-term dashboards /
+                        management systems</strong>. You can reach me directly via the 
+                        <strong>Contact</strong> section of this portfolio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <footer class="footer">
+                <span>© <strong>Magam Kushal Reddy</strong> • All rights reserved.</span>
+                <span>Designed with proper margins, alignment & responsiveness.</span>
+            </footer>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    // Smooth scroll
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    navToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.style.display === "block";
+        mobileMenu.style.display = isOpen ? "none" : "block";
+    });
+
+    // Close mobile menu when clicking a link or mobile CTA
+    const mobileLinks = document.querySelectorAll(".mobile-links a, .mobile-cta");
+    mobileLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.style.display = "none";
+        });
+    });
+
+    // Theme toggle logic
+    const bodyEl = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const themeToggleText = document.getElementById("themeToggleText");
+    const themeToggleMobile = document.getElementById("themeToggleMobile");
+    const themeToggleTextMobile = document.getElementById("themeToggleTextMobile");
+
+    function setTheme(isLight) {
+        if (isLight) {
+            bodyEl.classList.add("light-theme");
+            themeToggleText.textContent = "Light";
+            themeToggleTextMobile.textContent = "Light";
+        } else {
+            bodyEl.classList.remove("light-theme");
+            themeToggleText.textContent = "Dark";
+            themeToggleTextMobile.textContent = "Dark";
+        }
+    }
+
+    let light = false;
+    themeToggle.addEventListener("click", () => {
+        light = !light;
+        setTheme(light);
+    });
+    themeToggleMobile.addEventListener("click", () => {
+        light = !light;
+        setTheme(light);
+    });
+    
+    
+    
+    // FAQ ACCORDION
+document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+        const header = item.querySelector(".faq-item-header");
+        const body = item.querySelector(".faq-item-body");
+
+        // Set default open item height (for the item with .is-open)
+        if (item.classList.contains("is-open") && body) {
+            body.style.maxHeight = body.scrollHeight + "px";
+            body.style.paddingBottom = "10px";
+        }
+
+        header.addEventListener("click", () => {
+            const isOpen = item.classList.contains("is-open");
+
+            // Close all items (only one open at a time)
+            faqItems.forEach((other) => {
+                const otherBody = other.querySelector(".faq-item-body");
+                if (otherBody) {
+                    otherBody.style.maxHeight = null;
+                    otherBody.style.paddingBottom = "0px";
+                }
+                other.classList.remove("is-open");
+            });
+
+            // If the clicked one was closed, open it
+            if (!isOpen) {
+                item.classList.add("is-open");
+                body.style.maxHeight = body.scrollHeight + "px";
+                body.style.paddingBottom = "10px";
+            }
+        });
+    });
+});
+
+</script>
+</body>
+</html>
