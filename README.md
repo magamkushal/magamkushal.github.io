@@ -1,1 +1,1 @@
-# magamkushal.github.io
+Hello! iam Magam Kushal Reddy 
