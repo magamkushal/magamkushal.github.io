@@ -196,7 +196,7 @@
   function renderProfileCard() {
     const SIZE = 300;      // must match .orbit width/height in CSS
     const CENTER = SIZE/2;
-    const RADIUS = 150;    // distance from center to each bubble's center
+    const RADIUS = 160;    // distance from center to each bubble's center
     const START_ANGLE = -90; // start at 12 o'clock
     const n = ORBIT_ICONS.length;
 
